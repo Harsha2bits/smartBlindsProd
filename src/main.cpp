@@ -15,37 +15,10 @@
 #include "ledblinks.h"
 #include "deepsleep.h"
 
-// // Encoder
-
-// #define ROTARY_ENCODER_A_PIN 33
-// #define ROTARY_ENCODER_B_PIN 32
-// #define ROTARY_ENCODER_BUTTON_PIN 25
-
-// #define ROTARY_ENCODER_STEPS 4
 
 
 
-// AiEsp32RotaryEncoder rotaryEncoder = AiEsp32RotaryEncoder(ROTARY_ENCODER_A_PIN, ROTARY_ENCODER_B_PIN, ROTARY_ENCODER_BUTTON_PIN, -1, ROTARY_ENCODER_STEPS);
-
-// Button2 button;
-
-// RTC_DATA_ATTR int wakeup_level = 0;
-// RTC_DATA_ATTR bool calibrationDone = false;
-// RTC_DATA_ATTR long min = 0;
-
-
-// static unsigned long lastEncoderChanged = 0;
-
-// //sleep
-// #define uS_TO_S_FACTOR 1000000 /* Conversion factor for micro seconds to seconds */
-// #define TIME_TO_SLEEP 5
-// // #define wakeup_level 0
-
-
-
-
-    int
-    getCounter()
+int getCounter()
 {
     return (int)rotaryEncoder.readEncoder() ;
 }
@@ -151,7 +124,6 @@ void setup() {
             calibrateLed();
     }
     lastEncoderChanged = millis();
-    Serial.println("reached here");
 
     esp_sleep_enable_ext0_wakeup(GPIO_NUM_33, wakeup_level);
     print_wakeup_reason();
